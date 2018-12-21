@@ -121,8 +121,97 @@
                  <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
                     <h1><strong>Form 2</strong></h1><br>  
                     <center>
-                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeZXVZS0j2ZFLcf3qZfx87bDNmIkO8vnIA1zAnXaweRkrJS9A/viewform?embedded=true"
-                            width="640" height="1699" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+                    <form action="form2.php" method="POST">
+<table>
+    <tr>
+        <td>Name of College</td>
+        <td><div class="form-group"><input type="text" name="col_name" /></div></td>
+    </tr>
+    <tr>
+            <td>Address of College</td>
+            <td><div class="form-group"><input type="text" name="col_addr" /></div></td>
+   </tr>
+   
+    <tr>
+            <td>Contact Number</td>
+            <td><div class="form-group"><input type="tel" name="contact_num" /></div></td>
+    </tr>
+    <tr>
+            <td>Physical Education Director Name</td>
+            <td><div class="form-group"><input type="text" name="ped_name" /></div></td>
+    </tr>
+    <tr>
+            <td>Name of Athlete</td>
+            <td><div class="form-group"><input type="text" name="ath_name" /></div></td>
+    </tr>
+    <tr>
+            <td>Gender</td>
+            <td><div class="form-group"><input type="radio" name="gen" value="m" checked> Male
+                <input type="radio" name="gen" value="f"> Female</div>
+                </td>
+    </tr>
+    <tr>
+            <td>Event 1</td>
+            <td><div class="form-group"><input type="text" name="event_1" /></div></td>
+    </tr>
+    <tr>
+            <td>Event 2</td>
+            <td><div class="form-group"><input type="text" name="event_2" /></div></td>
+    </tr>
+    <tr>
+            <td>Relay</td>
+            <td><div class="form-group"><input type="text" name="relay" /></div></td>
+    </tr>
+    <tr>
+            <td>Reserve Event Name</td>
+            <td><div class="form-group"><input type="text" name="res_event" /></div></td>
+    </tr>
+    
+    <tr>
+        <td colspan="2"><center><div class="form-group"><input type="submit" value="Submit" name="sbmt_btn" /></div></center></td>
+    </tr>
+                
+
+
+</table>    
+
+</form>
+
+
+<?php
+
+error_reporting(0);
+
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "root";
+$dbName = "college";
+
+//echo " ".$dbName." ".$dbPassword." ".$dbServername." ".$dbUsername;
+$db = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Not Connected Successfully!!!");
+$col_name=$_POST['col_name'];
+$col_addr=$_POST['col_addr'];
+$ath_name=$_POST['ath_name'];
+$contact_num=$_POST['contact_num'];
+$ped_name=$_POST['ped_name'];
+$gen=$_POST['gen'];
+$event_1=$_POST['event_1'];
+$event_2=$_POST['event_2'];
+$relay=$_POST['relay'];
+$res_event=$_POST['res_event'];
+
+$query= "INSERT INTO form2 VALUES('".mysqli_real_escape_string($db,$col_name)."','".mysqli_real_escape_string($db,$col_addr)."','".mysqli_real_escape_string($db,$ped_name)."','".mysqli_real_escape_string($db,$contact_num)."','".mysqli_real_escape_string($db,$ath_name)."','".mysqli_real_escape_string($db,$gen)."','".mysqli_real_escape_string($db,$event_1)."','".mysqli_real_escape_string($db,$event_2)."','".mysqli_real_escape_string($db,$relay)."','".mysqli_real_escape_string($db,$res_event)."')";
+
+if(mysqli_query($db,$query)){
+    //header('Location: form1.php');
+    echo "Data Inserted Successfully!!!";
+
+}else{
+    echo "Data Insertion Failure!!!";
+}
+
+
+?>
                         <br><strong>Thank You For Interest!!!<br>Click Done after you complete submitting</strong>
                 </center>
                 <center><button id="done" onclick="redirect();">Done</button></center>            <br><br>
@@ -165,3 +254,4 @@
 
 </body>
 </html>
+

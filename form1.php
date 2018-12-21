@@ -21,8 +21,8 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css' />
 
 <!---Drop down list-->
-<link href="assets\css\dropdown.css" rel="stylesheet" />
-<link href="assets\css\dropdown-submenu.css" rel="stylesheet" />
+<link href="G:\Website\Project\assets\css\dropdown.css" rel="stylesheet" />
+<link href="G:\Website\Project\assets\css\dropdown-submenu.css" rel="stylesheet" />
 
 </head>
 
@@ -119,19 +119,101 @@
          <div id="features-sec" class="container set-pad" >
              <div class="row text-center">
                  <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
-                    <h1><strong>Form 2</strong></h1><br>  
+                    <h1><strong>Form 1</strong></h1><br>  
                     <center>
-                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeZXVZS0j2ZFLcf3qZfx87bDNmIkO8vnIA1zAnXaweRkrJS9A/viewform?embedded=true"
-                            width="640" height="1699" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-                        <br><strong>Thank You For Interest!!!<br>Click Done after you complete submitting</strong>
-                </center>
-                <center><button id="done" onclick="redirect();">Done</button></center>            <br><br>
-                <script>
-                    function redirect(){
-                        window.location="registration.php";
-                    }
-                </script>
-                    
+                            <marquee style="font-size: 18px; color: red;"> Please Bring Eligibility Performa Attached.</marquee>
+                            <form action="form1.php" method="POST">
+<table>
+    <tr>
+        <td>Name of College</td>
+        <td><div class="form-group"><input type="text" name="col_name" /></div></td>
+    </tr>
+    <tr>
+            <td>Email ID</td>
+            <td><div class="form-group"><input type="email" name="mail_id" /></div></td>
+   </tr>
+   <tr>
+        <td>Name of Principal</td>
+        <td><div class="form-group"><input type="text" name="princi_name" /></div></td>
+    </tr>
+    <tr>
+            <td>Contact Number</td>
+            <td><div class="form-group"><input type="tel" name="contact_num" /></div></td>
+    </tr>
+    <tr>
+            <td>Physical Education Director Name</td>
+            <td><div class="form-group"><input type="text" name="ped_name" /></div></td>
+    </tr>
+    <tr>
+            <td>Number of Men Athlete</td>
+            <td><div class="form-group"><input type="number" name="men_ath_cnt" /></div></td>
+    </tr>
+    <tr>
+            <td>Number of Women Athlete</td>
+            <td><div class="form-group"><input type="number" name="women_ath_cnt" /></div></td>
+    </tr>
+    <tr>
+            <td>Expected date of Arrival</td>
+            <td><div class="form-group"><input type="date" name="arr_date" /></div></td>
+    </tr>
+    <tr>
+            <td>Accomodation Required</td>
+            <td><div class="form-group"><input type="radio" name="acc_req" value="yes" checked> Yes
+                <input type="radio" name="acc_req" value="no"> No</div>
+                </td>
+    </tr>
+    <tr>
+        <td colspan="2"><center><div class="form-group"><input type="submit" value="Submit" name="sbmt_btn" /></div></center></td>
+    </tr>
+                
+
+
+</table>    
+
+</form>
+
+
+
+
+<?php
+
+error_reporting(0);
+
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "root";
+$dbName = "college";
+
+//echo " ".$dbName." ".$dbPassword." ".$dbServername." ".$dbUsername;
+$db = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die("Not Connected Successfully!!!");
+//$query="INSERT INTO form1 VALUES ('sad','asd@gmail.cm','sadsss','123456798','sdwwq','4','6','12-28-1997','Yes')";
+
+$col_name=$_POST['col_name'];
+$mail_id=$_POST['mail_id'];
+$princi_name=$_POST['princi_name'];
+$contact_num=$_POST['contact_num'];
+$ped_name=$_POST['ped_name'];
+$men_ath_cnt=$_POST['men_ath_cnt'];
+$women_ath_cnt=$_POST['women_ath_cnt'];
+$arr_date=$_POST['arr_date'];
+$acc_req=$_POST['acc_req'];
+
+$query= "INSERT INTO form1 VALUES ('".mysqli_real_escape_string($db,$col_name)."','".mysqli_real_escape_string($db,$mail_id)."','".mysqli_real_escape_string($db,$princi_name)."','".mysqli_real_escape_string($db,$contact_num)."','".mysqli_real_escape_string($db,$ped_name)."','".mysqli_real_escape_string($db,$men_ath_cnt)."','".mysqli_real_escape_string($db,$women_ath_cnt)."','".mysqli_real_escape_string($db,$arr_date)."','".mysqli_real_escape_string($db,$acc_req)."')";
+
+
+
+    //echo $query;
+    if(mysqli_query($db,$query)){
+        //header('Location: form1.php');
+        echo "Data Inserted Successfully!!!";
+    
+    }else{
+        echo "Data Insertion Failure!!!";
+    }
+?>
+                
+                        </center>
+                    <strong style="font-size: 25px; "><a href="form2.php" style="text-decoration: none;">Click Here</a> to fill form 2.</strong><br>
                 </div>
             </div>
         </div>
@@ -165,3 +247,4 @@
 
 </body>
 </html>
+

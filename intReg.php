@@ -21,8 +21,8 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css' />
 
 <!---Drop down list-->
-<link href="assets\css\dropdown.css" rel="stylesheet" />
-<link href="assets\css\dropdown-submenu.css" rel="stylesheet" />
+<link href="G:\Website\Project\assets\css\dropdown.css" rel="stylesheet" />
+<link href="G:\Website\Project\assets\css\dropdown-submenu.css" rel="stylesheet" />
 
 </head>
 
@@ -119,19 +119,12 @@
          <div id="features-sec" class="container set-pad" >
              <div class="row text-center">
                  <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
-                    <h1><strong>Form 2</strong></h1><br>  
+                    <h1><strong>Fill The Forms</strong></h1><br>  
                     <center>
-                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeZXVZS0j2ZFLcf3qZfx87bDNmIkO8vnIA1zAnXaweRkrJS9A/viewform?embedded=true"
-                            width="640" height="1699" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-                        <br><strong>Thank You For Interest!!!<br>Click Done after you complete submitting</strong>
+                             <strong style="font-size: 25px;"><a href="form1.php" style="text-decoration: none;">Click Here</a> to go to FORM 1. This is to be filled by Head or Physical Director of the college</strong><br>
+                             <strong style="font-size: 25px;"><a href="form2.php"style="text-decoration: none;">Click Here</a> to go to FORM 2. All the participants must fill this.</strong>         
                 </center>
-                <center><button id="done" onclick="redirect();">Done</button></center>            <br><br>
-                <script>
-                    function redirect(){
-                        window.location="registration.php";
-                    }
-                </script>
-                    
+                <br><br><br>
                 </div>
             </div>
         </div>
